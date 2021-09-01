@@ -16,6 +16,17 @@ the data contained in the QRcode.**
 2. Install [Composer](https://getcomposer.org/).
 3. Run `composer install` in the project root directory.
 
+
+#### RHEL 8.4
+These are steps needed to setup on RHEL 8.4: 
+```sh
+sudo dnf install -y php-cli php-devel php-pear php-mbstring libsodium-devel
+sudo pecl install -f libsodium
+echo extension=sodium.so | sudo tee -a /etc/php.d/20-sodium.ini
+./composer.phar install
+php parse.php < data.shc 
+```
+
 ## Usage
 
 1. Use a QRcode app to scan the QRcode you want to parse.
